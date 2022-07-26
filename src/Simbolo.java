@@ -4,11 +4,16 @@ public class Simbolo {
     private int Linea;      //LA POSICION (LINEA)
     private int Caracter;   //LA POSICION DENTRO DE LA LINEA (CARACTER)
 
-    public Simbolo(String Symbol, String[] Tipo, int y, int x){
+    public Simbolo(String Symbol, String[] Tipo){
         this.Symbol = Symbol;
         this.Tipo = Tipo;
-        this.Linea = y;
-        this.Caracter = x;
+        this.Linea = 0;
+        this.Caracter = 0;
+    }
+
+    public void setpos(int Linea, int Caracter){
+        this.Linea = Linea;
+        this.Caracter = Caracter;
     }
 
     public String getPos(){
@@ -21,5 +26,10 @@ public class Simbolo {
 
     public String[] getTipo() {
         return Tipo;
+    }
+
+    @Override  //Yo lo hice
+    public String toString(){
+        return Symbol;
     }
 }
