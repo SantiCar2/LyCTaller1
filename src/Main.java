@@ -9,6 +9,13 @@ public class Main {
     public static void main(String[] args) {
 
     }
+    public Queue<Simbolo> crearSimbolos(Queue<String> nombres, Queue<String[]> tipos){
+        Queue<Simbolo> ret = new LinkedList<Simbolo>();
+        for(int i = 0; i < nombres.size(); i++){
+            ret.add(new Simbolo(nombres.poll(), tipos.poll()));
+        }
+        return ret;
+    }
     public Hashtable<Integer, Simbolo> fillDict(Queue<Simbolo> cola){
         Hashtable<Integer, Simbolo> ret = new Hashtable<Integer, Simbolo>();
         for(int i = 0; i < cola.size(); i++){
