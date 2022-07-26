@@ -1,0 +1,42 @@
+:D  
+///
+Token,Operador 
+:D
+**** 
+Token,Operador
+:D
+++
+Token,Operador
+:D
+- 
+Token,Operador
+:D
+==
+Token,Operador
+:D
+/-
+Token,Operador
+:D
+&&
+Token,Operador
+:D
+~
+Token,Operador
+:D
+!>
+Token,Operador
+:D
+<! 
+Token,Operador
+:D
+Isas
+Condicional,Palabra Reservada
+:D
+Fore
+Condicional,Palabra Reservada
+:D
+MientrasTanto
+Condicional,Palabra Reservada
+
+
+
