@@ -4,9 +4,11 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Scanner;
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -27,13 +29,20 @@ import java.awt.Font;
 public class Panel_Principal extends JFrame {
 
 	private JPanel contentPane;
-	private static final String rutaSimbolos = "C:\\Users\\Dennis\\eclipse-workspace\\LenguajesCompiladores\\Archivos\\Simbolos.txt";
-	private static final String rutaOperadores = "C:\\Users\\Dennis\\eclipse-workspace\\LenguajesCompiladores\\Archivos\\Operadores.txt";
-	private static final String rutaCondicionales = "C:\\Users\\Dennis\\eclipse-workspace\\LenguajesCompiladores\\Archivos\\Condicionales.txt";
-	
+	private static final String rutaSimbolos = "C:\\Users\\Dennis\\eclipse-workspace\\LC\\Archivos\\Simbolos.txt";
+	private static Queue<tuplaSimbolos> tuplas = new LinkedList<tuplaSimbolos>();
+
+	// private static Queue<String> textoParrafo = new LinkedList<String>();
+
+	// private static final String rutaOperadores =
+	// "C:\\Users\\Dennis\\eclipse-workspace\\LenguajesCompiladores\\Archivos\\Operadores.txt";
+	// private static final String rutaCondicionales =
+	// "C:\\Users\\Dennis\\eclipse-workspace\\LenguajesCompiladores\\Archivos\\Condicionales.txt";
+
 	/**
 	 * Launch the application.
 	 */
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -52,6 +61,8 @@ public class Panel_Principal extends JFrame {
 	 */
 	public Panel_Principal() {
 		Panel_2 p2 = new Panel_2();
+
+		Main m = new Main();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 599, 300);
 		contentPane = new JPanel();
@@ -60,7 +71,6 @@ public class Panel_Principal extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
 
 		JButton btnNewButton = new JButton("Verificar\r\n");
 		btnNewButton.setBounds(214, 201, 164, 23);
@@ -77,30 +87,18 @@ public class Panel_Principal extends JFrame {
 		contentPane.add(textPane);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				 p2.ventana.setVisible(true);
 
-				File doc = new File(rutaSimbolos);
+				p2.ventana.setVisible(true);
 
-				BufferedReader obj = null;
-				try {
-					obj = new BufferedReader(new FileReader(doc));
-				} catch (FileNotFoundException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				tuplas = Main.extraerFichero();
 
-				String strng;
-				try {
-					while ((strng = obj.readLine()) != null);
-						//System.out.println(strng);
-					
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				String textoParrafos = textPane.getText();
 
+				Main.crearTabla(tuplas, textoParrafos).forEach(s -> System.out.println(s));;
+				System.out.println("Aqui estoy hola");
 			}
 		});
-		
+
 	}
+
 }

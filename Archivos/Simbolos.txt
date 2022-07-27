@@ -1,14 +1,13 @@
-:D  
 ///
-Token,Operador 
+Token,Operador
 :D
-**** 
+****
 Token,Operador
 :D
 ++
-Token,Operador
+Token,Operador,Breve
 :D
-- 
+-
 Token,Operador
 :D
 ==
@@ -26,7 +25,7 @@ Token,Operador
 !>
 Token,Operador
 :D
-<! 
+<!
 Token,Operador
 :D
 Isas
@@ -37,6 +36,12 @@ Condicional,Palabra Reservada
 :D
 MientrasTanto
 Condicional,Palabra Reservada
-
-
-
+:D
+ 
+Separador,Token
+:D
+	
+Separador,Token
+:D
+@
+Separador,Token

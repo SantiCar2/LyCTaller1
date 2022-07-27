@@ -11,7 +11,11 @@ public class Simbolo {
         this.Caracter = 0;
     }
 
-    public void setpos(int Linea, int Caracter){
+    public Simbolo(String poll, String poll2) {
+		// TODO Auto-generated constructor stub
+	}
+
+	public void setpos(int Linea, int Caracter){
         this.Linea = Linea;
         this.Caracter = Caracter;
     }

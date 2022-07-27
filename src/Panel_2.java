@@ -15,10 +15,7 @@ public class Panel_2 extends JFrame {
 	private JPanel contentPane;
 	public JFrame ventana;
 	private JTable table;
-	private String[][] datos = {{ "1", "Fernando", "Castillo", "Ecuador" },
-			{ "2", "Fernando", "Castillo", "Ecuador" },{"2", "Fernando", "Castillo", "Ecuador" },{"2", "Fernando", "Castillo", "Ecuador" },
-			{"2", "Fernando", "Castillo", "Ecuador" },{"2", "Fernando", "Castillo", "Ecuador" },{"2", "Fernando", "Castillo", "Ecuador" },{"2", "Fernando", "Castillo", "Ecuador" }
-			, {"2", "Fernando", "Castillo", "Ecuador" },{"2", "Fernando", "Castillo", "Ecuador" }};
+	private String[][] datos = {{ "1", "Fernando", "Castillo", "Ecuador" }};
 	private String[] titulos = { "Simbolo", "Ubicacion", "Tipo 1", "Tipo2" };
 
 	/**
@@ -41,6 +38,7 @@ public class Panel_2 extends JFrame {
 	 * Create the frame.
 	 */
 	public Panel_2() {
+		//Panel_Principal p = new Panel_Principal();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -56,6 +54,7 @@ public class Panel_2 extends JFrame {
 		ventana.setSize(438, 200);
 		set_Table();
 		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		
 
 	}
