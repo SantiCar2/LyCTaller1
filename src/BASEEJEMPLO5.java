@@ -3,7 +3,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Spliterator;
 
-public class Ejercicio5 {
+public class BASEEJEMPLO5 {
 
 	public static void main(String[] args) {
 		// System.out.println(

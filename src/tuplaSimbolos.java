@@ -6,7 +6,7 @@ public class tuplaSimbolos {
 
 	public tuplaSimbolos(String simbolo, String[] tipos) {
 		super();
-		Simbolo = simbolo;
+		this.Simbolo = simbolo;
 		this.tipos = tipos;
 	}
 
@@ -16,7 +16,7 @@ public class tuplaSimbolos {
 
 	@Override
 	public String toString() {
-		return " [Simbolo = " + Simbolo + ", tipos = " + Arrays.toString(tipos) + "]";
+		return " [Simbolo = " + Simbolo + "\ttipos = " + Arrays.toString(tipos) + "]";
 	}
 
 	public String getSimbolo() {

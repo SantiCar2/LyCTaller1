@@ -16,7 +16,7 @@ public class Panel_2 extends JFrame {
 	public JFrame ventana;
 	private JTable table;
 	private String[][] datos = {{ "1", "Fernando", "Castillo", "Ecuador" }};
-	private String[] titulos = { "Simbolo", "Ubicacion", "Tipo 1", "Tipo2" };
+	private String[] titulos = { "Simbolo", "Ubicacion", "Tipos"};
 
 	/**
 	 * Launch the application.
