@@ -4,7 +4,7 @@ public class Simbolo {
     private int Linea;      //LA POSICION (LINEA)
     private int Caracter;   //LA POSICION DENTRO DE LA LINEA (CARACTER)
 
-    public Simbolo(String Symbol, String[] Tipo){
+    public Simbolo(String Symbol, String[] Tipo){ //Clase creada con fines de almacenar informacion
         this.Symbol = Symbol;
         this.Tipo = Tipo;
         this.Linea = 0;
@@ -32,7 +32,7 @@ public class Simbolo {
         return Tipo;
     }
 
-    @Override  //Yo lo hice
+    @Override
     public String toString(){
         return Symbol;
     }

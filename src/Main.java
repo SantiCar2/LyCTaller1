@@ -32,70 +32,17 @@ public class Main {//En esta clase creamos todos los metodos principales para pa
 
 	}
 
-	/*
-	 * Queue<Simbolo> temp = new LinkedList<Simbolo>(); // TODO: Quitar esto por la
-	 * Cola de verdad Hashtable<Integer, Simbolo> diccionarioNormis =
-	 * fillDict(temp/* TODO: Pasar cola * /);
-	 * 
-	 * Stack<Simbolo> resultados = ReadText(""/* TODO: Meter input * /,
-	 * diccionarioNormis);
-	 * 
-	 * public Queue<Simbolo> crearSimbolos(Queue<String> nombres, Queue<String[]>
-	 * tipos) { Queue<Simbolo> ret = new LinkedList<Simbolo>(); for (int i = 0; i <
-	 * nombres.size(); i++) { ret.add(new Simbolo(nombres.poll(), tipos.poll())); }
-	 * return ret; }
-	 * 
-	 * public Hashtable<Integer, Simbolo> fillDict(Queue<Simbolo> cola) {
-	 * Hashtable<Integer, Simbolo> ret = new Hashtable<Integer, Simbolo>(); for (int
-	 * i = 0; i < cola.size(); i++) { ret.put(i, cola.poll()); } return ret; }
-	 * 
-	 * public Stack<Simbolo> ReadText(String input, Hashtable<Integer, Simbolo>
-	 * diccionarioNormis) { Stack<Simbolo> result = new Stack<Simbolo>();
-	 * 
-	 * String[] lineas = input.split("\n");
-	 * 
-	 * for (int i = 0; i < lineas.length; i++) { // Recorre linea por linea for (int
-	 * j = 0; j < lineas[i].toCharArray().length; j++) { // Recorre caracter por
-	 * caracter for (int k = 0; k < diccionarioNormis.size(); k++) { // Compara el
-	 * caracter con el caracter de los // simbolos String temp = ""; for (int l = 0;
-	 * l < diccionarioNormis.get(k).toString().length(); l++) { temp = temp +
-	 * lineas[i].toCharArray()[j + l]; } if (0 ==
-	 * diccionarioNormis.get(k).toString().compareTo(temp)) { Simbolo tempSim =
-	 * diccionarioNormis.get(k); tempSim.setpos(i, j); result.add(tempSim); } } } }
-	 * return result; } public void extraerFicheros() { File doc = new
-	 * File("Archivos\\Simbolos.txt");
-	 * 
-	 * BufferedReader obj = null; try { obj = new BufferedReader(new
-	 * FileReader(doc)); } catch (FileNotFoundException e1) { // TODO Auto-generated
-	 * catch block e1.printStackTrace(); } // Queue<String> colaDeSimbolos = new
-	 * LinkedList<String>(); // Queue<String> colaDeTipos = new
-	 * LinkedList<String>(); String strng = ""; String[] nuevo = {}; try { while
-	 * ((strng = obj.readLine()) != null) { if (strng.compareTo(":D") != 0 &&
-	 * strng.compareTo("Token,Operador") != 0 && strng.compareTo("Isas") != 0 &&
-	 * strng.compareTo("Fore") != 0 && strng.compareTo("Condicional,Palabra
-	 * Reservada") != 0 && strng.compareTo("MientrasTanto") != 0) {
-	 * 
-	 * colaDeSimbolos.add(strng); //System.out.println(colaDeSimbolos.poll()); }
-	 * else if (strng.compareTo(":D") != 0) { nuevo = strng.split(",");
-	 * colaDeTipos.add(nuevo); //System.out.println(colaDeTipos.poll()); }
-	 * 
-	 * } // System.out.println(strng);
-	 * 
-	 * } catch (IOException e1) { // TODO Auto-generated catch block
-	 * e1.printStackTrace(); }
-	 * 
-	 * }
-	 */
+
 	public static String[][] tableData(Queue<filaTabla> data) {//Este metodo se utiliza para crear nuestra tabla de datos 
 		//recolectados en el ficheroEscritua y pasarselo a nuestro atributo datos en el panel_2.
-		String[][] ret = new String[data.size()][3];
-		int size = data.size();
+		String[][] ret = new String[data.size()][3]; //Creamos una matriz temporal para retornarla al final despues de llenarla
+		int size = data.size(); //Obetenemos la cantidad de simbolos que se encontraron
 		for (int i = 0; i < size; i++) {
-			filaTabla temp = data.poll();
-			ret[i][0] = temp.getTupla().getSimbolo();
-			ret[i][1] = temp.getUbicacion();
+			filaTabla temp = data.poll();	//Creamos un temporal para guardar la fila con la informacion obtenida
+			ret[i][0] = temp.getTupla().getSimbolo(); //llenamos la matriz con el simbolo
+			ret[i][1] = temp.getUbicacion(); //Guardamos la ubicacion en la matriz
 			String tiposTemp = "";
-			for (String s : temp.getTupla().getTipos()) {
+			for (String s : temp.getTupla().getTipos()) { //Guardamos todos los tipos del simbolo que se encontró
 				tiposTemp += s;
 				tiposTemp += ", ";
 			}
@@ -103,88 +50,91 @@ public class Main {//En esta clase creamos todos los metodos principales para pa
 		}
 		System.out.println(ret);
 
-		for (int i = 0; i < ret.length; i++) {
+		for (int i = 0; i < ret.length; i++) { //Debugging
 			for (int j = 0; j < ret[i].length; j++) {
 				System.out.println(ret[i][j]);
 			}
 			System.out.println();
 		}
 
-		return ret;
+		return ret; //retornamos la informacion organizada
 	}
 
-	public static Queue<tuplaSimbolos> extraerFicheroSimbolo() {
-		String texto = ManejadorDeFicheros.leerFichero(rutaSimbolos);
-		String[] divisionSeparaciones = texto.split(":D\n");
+	public static Queue<tuplaSimbolos> extraerFicheroSimbolo() { //Se extraen los simbolos del fichero
+		String texto = ManejadorDeFicheros.leerFichero(rutaSimbolos); //Obtenemos todo el fichero en un String
+		String[] divisionSeparaciones = texto.split(":D\n");	//Separamos el fichero por el separador que defnimo (:D)
 		for (int i = 0; i < divisionSeparaciones.length; i++) {
-			String[] split = divisionSeparaciones[i].split("\n");
-			tuplas.add(new tuplaSimbolos(split[0], split[1].split(",")));
+			String[] split = divisionSeparaciones[i].split("\n");	//Separamos los nombres de los tipos
+			tuplas.add(new tuplaSimbolos(split[0], split[1].split(","))); //Lo añadimos a la cola con la informacion
 		}
-		return tuplas;
+		return tuplas; //Retornamos toda la informacion obtenida del fichero
 	}
 
-	public static String extraerFicheroEscritura() {
-		String texto = ManejadorDeFicheros.leerFichero(rutaEscritura);
-		return texto;
+	public static String extraerFicheroEscritura() {	//Lee el fichero con el texto de entrada
+		String texto = ManejadorDeFicheros.leerFichero(rutaEscritura);	//lo guarda todo en un String
+		return texto;	//Retorna la informacion obtenida del fichero
 	}
 
-	public void leerTuplas() {
-		extraerFicheroSimbolo().forEach(s -> System.out.println(s));
+	public void leerTuplas() {	//**DEBUGGING**
+		extraerFicheroSimbolo().forEach(s -> System.out.println(s)); //Imprime en consola los simbolos encontrados del fichero
 	}
 
-	public static Queue<filaTabla> crearTabla(Queue<tuplaSimbolos> tupla, String textoCompleto) {
-		Queue<filaTabla> tabla = new LinkedList<filaTabla>();
-		String auxiliar = "";
-		textoCompleto = extraerFicheroEscritura();
-		int fila = 0;
-		int col = 0;
-		for (int i = 0; i < textoCompleto.length(); i++) {
-			String caracter = String.valueOf(textoCompleto.charAt(i));
-			if (caracter.compareTo("\n") == 0) {
-				fila++;
-				col = 0;
-				auxiliar = "";
+	public static Queue<filaTabla> crearTabla(Queue<tuplaSimbolos> tupla, String textoCompleto) throws Exception{ //Crea la tabla con la informacion de los simbolos encontrados
+		Queue<filaTabla> tabla = new LinkedList<filaTabla>();	//Creamos la cola para guardar las filas de la tabla
+		String auxiliar = "";	//String vacio para guardar los caracteres hasta encontrar un separador
+		textoCompleto = extraerFicheroEscritura();	//Obtiene el texto de entrada
+		if(textoCompleto.length() < 1){
+			throw new Exception("¿El texto de entrada está vacío!");
+		}
+		int fila = 0;	//Indicador para la posicion
+		int col = 0;	//Indicador para la posicion
+		for (int i = 0; i < textoCompleto.length(); i++) {	//Revisa todos los caracteres del texto de entrada
+			String caracter = String.valueOf(textoCompleto.charAt(i));	//Guarda el caracter a revisar
+			if (caracter.compareTo("\n") == 0) {	//Revisa si este caracter es un "Enter"
+				fila++;	//Si es un enter añade 1 a la linea
+				col = 0;	//Hace que la columna esté en 0
+				auxiliar = "";	//Reinicia el auxiliar a su estado original
 			} else {
-				tuplaSimbolos esSeparador = categorizarCaracter(tupla, caracter);
-				if (esSeparador != null) {
+				tuplaSimbolos esSeparador = categorizarCaracter(tupla, caracter);	//Obtiene el caracter y lo categoriza
+				if (esSeparador != null) {	//Revisa si está vacío
 					int iSeparador = 0;
 
-					while (iSeparador < esSeparador.getTipos().length
+					while (iSeparador < esSeparador.getTipos().length	//Revisa si en los tipos del caracter es un separador
 							&& esSeparador.getTipos()[iSeparador].compareToIgnoreCase("separador") != 0) {
 						iSeparador++;
 					}
 					if (iSeparador < esSeparador.getTipos().length) {
 
 						
-						System.out.println(auxiliar);
-						tuplaSimbolos tuplaPalabra = categorizarCaracter(tupla, auxiliar);
-						if (tuplaPalabra != null) {
-							tabla.add(new filaTabla(tuplaPalabra, fila + "," + (col - auxiliar.length())));
+						System.out.println(auxiliar);	//**DEBUGGING** Imprime el progreso de auxiliar en consola
+						tuplaSimbolos tuplaPalabra = categorizarCaracter(tupla, auxiliar);	//Categoriza la palabra guardada en auxiliar
+						if (tuplaPalabra != null) {	//Revisa si es vacío
+							tabla.add(new filaTabla(tuplaPalabra, fila + "," + (col - auxiliar.length())));	//Si existe lo guarda
 							
-						} else{
+						} else{	//Si no existe lo guarda como identificador
 							tabla.add(new filaTabla(new tuplaSimbolos(auxiliar, new String[]{"Identificador"}), fila + "," + (col + 1 - auxiliar.length())));
 						}
-						tabla.add(new filaTabla(esSeparador, fila + "," + (col)));
+						tabla.add(new filaTabla(esSeparador, fila + "," + (col)));	//Añade el separador encontrado
 
-						auxiliar = "";
+						auxiliar = "";	//Revierte auxiliar a su estado original
 					}
 
 				} else {
-					auxiliar += caracter;
+					auxiliar += caracter;	//Aáde el caracter a auxiliar para luego evaluarlo
 				}
 			}
 
-			if (i == textoCompleto.length() - 1) {
-				tuplaSimbolos tuplaPalabra = categorizarCaracter(tupla, auxiliar);
-				if (tuplaPalabra != null) {
-					System.out.println(auxiliar);
-					tabla.add(new filaTabla(tuplaPalabra, fila + "," + (i + 1 - auxiliar.length())));
+			if (i == textoCompleto.length() - 1) {	//Revisa si llegó al final del texto
+				tuplaSimbolos tuplaPalabra = categorizarCaracter(tupla, auxiliar);	//Categoriza a la palabra guardada en auxiliar
+				if (tuplaPalabra != null) {	//revisa si existe
+					System.out.println(auxiliar);	//**DEBUGGING** Imprime el valor de auxiliar
+					tabla.add(new filaTabla(tuplaPalabra, fila + "," + (i + 1 - auxiliar.length())));	//Agrega la informacion a la tabla
 					
-				} else{
+				} else{	//Si no existe en la lista de simbolos, lo añade como un identificador
 					tabla.add(new filaTabla(new tuplaSimbolos(auxiliar, new String[]{"Identificador"}), fila + "," + (col + 1 - auxiliar.length())));
 				}
 			}
-			col++;
+			col++;	//Agrega 1 al valor de la columna
 
 		}
 
@@ -192,17 +142,16 @@ public class Main {//En esta clase creamos todos los metodos principales para pa
 
 	}
 
-	public static tuplaSimbolos categorizarCaracter(Queue<tuplaSimbolos> tuplas, String s) {
-		int i = 0;
+	public static tuplaSimbolos categorizarCaracter(Queue<tuplaSimbolos> tuplas, String s) {	//Categoriza el caracter que le pase
 		for (tuplaSimbolos tupla : tuplas) {
 			// System.out.println(tupla.getSimbolo() + "===" + s);
-			if (tupla.getSimbolo().compareTo(s) == 0) {
-				System.out.println(tupla);
-				return tupla;
+			if (tupla.getSimbolo().compareTo(s) == 0) {	//Revisa si es igual a algun simbolo de la lista
+				System.out.println(tupla);	//**DEBUGGING** Muestra el simbolo que encuentre
+				return tupla;	//Retorna el simbolo encontrado
 			}
 		}
 
-		return null;
+		return null;	//Si no lo encuentra retorna vacío
 
 	}
 

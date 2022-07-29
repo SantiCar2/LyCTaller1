@@ -68,7 +68,7 @@ public class Panel_Principal extends JFrame {// Definimos la clase Panel Princip
 	 * Create the frame.
 	 */
 	public Panel_Principal() {// Definimos el constructor del panel principal vacio en el cual creamos los
-		// paneles y todos los esquemas de diseño.
+		// paneles y todos los esquemas de diseï¿½o.
 		// Panel_2 p2 = new Panel_2();
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -102,7 +102,12 @@ public class Panel_Principal extends JFrame {// Definimos la clase Panel Princip
 				// Main.crearTabla(tuplas, textoParrafos).forEach(s -> System.out.println(s))
 				tuplas = Main.extraerFicheroSimbolo();
 				textPane.setText(Main.extraerFicheroEscritura());
-				Panel_2 p = new Panel_2(Main.tableData(Main.crearTabla(tuplas, textoParrafos)));
+				Panel_2 p = null;
+				try {
+					p = new Panel_2(Main.tableData(Main.crearTabla(tuplas, textoParrafos)));
+				} catch (Exception ex) {
+					ex.printStackTrace();
+				}
 				p.ventana.setVisible(true);
 				dispose();
 

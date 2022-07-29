@@ -4,7 +4,7 @@ public class tuplaSimbolos {
 	private String Simbolo;
 	private String[] tipos;
 
-	public tuplaSimbolos(String simbolo, String[] tipos) {
+	public tuplaSimbolos(String simbolo, String[] tipos) { //Clase creada con fines de almacenar informacion
 		super();
 		this.Simbolo = simbolo;
 		this.tipos = tipos;

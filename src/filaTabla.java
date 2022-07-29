@@ -3,7 +3,7 @@ public class filaTabla {
 	tuplaSimbolos tupla;
 	String ubicacion;
 
-	public filaTabla(tuplaSimbolos tupla, String ubicacion) {
+	public filaTabla(tuplaSimbolos tupla, String ubicacion) {	//Clase creada con fines de almacenar informacion
 		super();
 		this.tupla = tupla;
 		this.ubicacion = ubicacion;
