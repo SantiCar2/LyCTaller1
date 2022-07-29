@@ -5,20 +5,25 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
-public class Main {
+public class Main {//En esta clase creamos todos los metodos principales para pasarle 
 
-	private static final String rutaSimbolos = "Archivos\\Simbolos.txt";
-	private static Queue<tuplaSimbolos> tuplas = new LinkedList<tuplaSimbolos>();
+	private static final String rutaSimbolos = "Archivos\\Simbolos.txt";// Es la ruta que 
+	//utilizamos para almacenar nuestra tabla de simbolos.
+	private static Queue<tuplaSimbolos> tuplas = new LinkedList<tuplaSimbolos>();//En etse Queue almacenamos nuestra Tupla de 
+	//Simbolos.
+	private static final String rutaEscritura = "Archivos\\EscribeAqui.txt";// Esta ruta se
+	//utiliza para el fichero en el cual se debee escribir el texto para despues compilar nuestro lenguaje.
 
-	public static Queue<tuplaSimbolos> getTuplas() {
+	public static Queue<tuplaSimbolos> getTuplas() {//LA usamos para acceder a nuestra Tupla de simbolos.
 		return tuplas;
 	}
 
-	public static void setTuplas(Queue<tuplaSimbolos> tuplas) {
+	public static void setTuplas(Queue<tuplaSimbolos> tuplas) {//Lo utiliamos para llenar nuestra Tupla de simbolos.
 		Main.tuplas = tuplas;
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) {//En este Main probamos la clase Main y verificamos que los archivos se lean y se
+		//creen bien y ademas hacemos el metodo de verificacion.
 		Main m = new Main();
 		// m.extraerFichero();
 		m.leerTuplas();
@@ -81,7 +86,8 @@ public class Main {
 	 * 
 	 * }
 	 */
-	public static String[][] tableData(Queue<filaTabla> data) {
+	public static String[][] tableData(Queue<filaTabla> data) {//Este metodo se utiliza para crear nuestra tabla de datos 
+		//recolectados en el ficheroEscritua y pasarselo a nuestro atributo datos en el panel_2.
 		String[][] ret = new String[data.size()][3];
 		int size = data.size();
 		for (int i = 0; i < size; i++) {
@@ -97,8 +103,8 @@ public class Main {
 		}
 		System.out.println(ret);
 
-		for (int i = 0; i < ret.length; i++){
-			for(int j = 0; j < ret[i].length; j++){
+		for (int i = 0; i < ret.length; i++) {
+			for (int j = 0; j < ret[i].length; j++) {
 				System.out.println(ret[i][j]);
 			}
 			System.out.println();
@@ -107,7 +113,7 @@ public class Main {
 		return ret;
 	}
 
-	public static Queue<tuplaSimbolos> extraerFichero() {
+	public static Queue<tuplaSimbolos> extraerFicheroSimbolo() {
 		String texto = ManejadorDeFicheros.leerFichero(rutaSimbolos);
 		String[] divisionSeparaciones = texto.split(":D\n");
 		for (int i = 0; i < divisionSeparaciones.length; i++) {
@@ -117,20 +123,26 @@ public class Main {
 		return tuplas;
 	}
 
+	public static String extraerFicheroEscritura() {
+		String texto = ManejadorDeFicheros.leerFichero(rutaEscritura);
+		return texto;
+	}
+
 	public void leerTuplas() {
-		extraerFichero().forEach(s -> System.out.println(s));
+		extraerFicheroSimbolo().forEach(s -> System.out.println(s));
 	}
 
 	public static Queue<filaTabla> crearTabla(Queue<tuplaSimbolos> tupla, String textoCompleto) {
 		Queue<filaTabla> tabla = new LinkedList<filaTabla>();
 		String auxiliar = "";
+		textoCompleto = extraerFicheroEscritura();
 		int fila = 0;
 		int col = 0;
 		for (int i = 0; i < textoCompleto.length(); i++) {
 			String caracter = String.valueOf(textoCompleto.charAt(i));
 			if (caracter.compareTo("\n") == 0) {
 				fila++;
-				col = i;
+				col = 0;
 				auxiliar = "";
 			} else {
 				tuplaSimbolos esSeparador = categorizarCaracter(tupla, caracter);
@@ -142,12 +154,18 @@ public class Main {
 						iSeparador++;
 					}
 					if (iSeparador < esSeparador.getTipos().length) {
-						tabla.add(new filaTabla(esSeparador, fila + "," + (i)));
+
+						
 						System.out.println(auxiliar);
 						tuplaSimbolos tuplaPalabra = categorizarCaracter(tupla, auxiliar);
 						if (tuplaPalabra != null) {
-							tabla.add(new filaTabla(tuplaPalabra, fila + "," + (i - auxiliar.length())));
+							tabla.add(new filaTabla(tuplaPalabra, fila + "," + (col - auxiliar.length())));
+							
+						} else{
+							tabla.add(new filaTabla(new tuplaSimbolos(auxiliar, new String[]{"Identificador"}), fila + "," + (col + 1 - auxiliar.length())));
 						}
+						tabla.add(new filaTabla(esSeparador, fila + "," + (col)));
+
 						auxiliar = "";
 					}
 
@@ -161,8 +179,12 @@ public class Main {
 				if (tuplaPalabra != null) {
 					System.out.println(auxiliar);
 					tabla.add(new filaTabla(tuplaPalabra, fila + "," + (i + 1 - auxiliar.length())));
+					
+				} else{
+					tabla.add(new filaTabla(new tuplaSimbolos(auxiliar, new String[]{"Identificador"}), fila + "," + (col + 1 - auxiliar.length())));
 				}
 			}
+			col++;
 
 		}
 

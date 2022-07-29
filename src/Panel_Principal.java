@@ -26,14 +26,19 @@ import javax.swing.SwingConstants;
 import javax.swing.JTextPane;
 import java.awt.Font;
 
-public class Panel_Principal extends JFrame {
+public class Panel_Principal extends JFrame {// Definimos la clase Panel Principal en la cual vamos a almacenar nuestro
+	// texto escrito por el usuario.
 
-	private JPanel contentPane;
-	private static final String rutaSimbolos = "C:\\Users\\Dennis\\eclipse-workspace\\LC\\Archivos\\Simbolos.txt";
-	public static Queue<tuplaSimbolos> tuplas = new LinkedList<tuplaSimbolos>();
+	private JPanel contentPane;// Se utiliza para almacenar todas las plantillas en el front
+	private static final String rutaSimbolos = "Archivos\\\\Simbolos.txt";// Es la ruta que 
+	//utilizamos para almacenar nuestra tabla de simbolos.
+	private static final String rutaEscritura = "Archivos\\\\EscribeAqui.txt";// Esta ruta se
+	//utiliza para el fichero en el cual se debee escribir el texto para despues compilar nuestro lenguaje.
+	public static Queue<tuplaSimbolos> tuplas = new LinkedList<tuplaSimbolos>();// Utilizamos un Queque para almacenar
+	// nuestra tupla de simbolos
 
-	public Main m = new Main();
-	public String textoParrafos;
+	public Main m = new Main(); // Definimos el main como variable para utilizarlo en el Front
+	public String textoParrafos; // Se utiliza para almacenar el parrafo de nuestro fichero
 
 	// private static Queue<String> textoParrafo = new LinkedList<String>();
 
@@ -46,7 +51,7 @@ public class Panel_Principal extends JFrame {
 	 * Launch the application.
 	 */
 
-	public static void main(String[] args) {
+	public static void main(String[] args) {// Este main nos ejecuta El frame el cual contiene el panel principal.
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -62,9 +67,9 @@ public class Panel_Principal extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Panel_Principal() {
-		//Panel_2 p2 = new Panel_2();
-
+	public Panel_Principal() {// Definimos el constructor del panel principal vacio en el cual creamos los
+		// paneles y todos los esquemas de diseño.
+		// Panel_2 p2 = new Panel_2();
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 599, 300);
@@ -88,14 +93,18 @@ public class Panel_Principal extends JFrame {
 		JTextPane textPane = new JTextPane();
 		textPane.setBounds(10, 36, 565, 154);
 		contentPane.add(textPane);
+		textPane.setText(Main.extraerFicheroEscritura());
 		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				//Main.crearTabla(tuplas, textoParrafos).forEach(s -> System.out.println(s))
-				tuplas = Main.extraerFichero();
-				textoParrafos = textPane.getText();
+			public void actionPerformed(ActionEvent e) { // Se define el metodo actionPerformed en el que agregamos un
+				// boton que cuando se ejecute verifique el parrafo escrito
+				// en el fichero y despues creemos una tabla donde colocamos
+				// todos nuestros resultados.
+				// Main.crearTabla(tuplas, textoParrafos).forEach(s -> System.out.println(s))
+				tuplas = Main.extraerFicheroSimbolo();
+				textPane.setText(Main.extraerFicheroEscritura());
 				Panel_2 p = new Panel_2(Main.tableData(Main.crearTabla(tuplas, textoParrafos)));
 				p.ventana.setVisible(true);
-
+				dispose();
 
 				;
 
