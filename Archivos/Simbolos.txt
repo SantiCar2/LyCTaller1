@@ -1,32 +1,32 @@
 ///
-Token,Operador,Identificador
+Operador,Identificador
 :D
 ****
-Token,Operador,Identificador
+Operador,Identificador
 :D
 ++
-Token,Operador,Identificador
+Operador,Identificador
 :D
 -
-Token,Operador,Identificador
+Operador,Identificador
 :D
 ==
-Token,Operador,Identificador
+Operador,Identificador
 :D
 /-
-Token,Operador,Identificador
+Operador,Identificador
 :D
 &&
-Token,Operador,Identificador
+Operador,Identificador
 :D
 ~
-Token,Operador,Identificador
+Operador,Identificador
 :D
 !>
-Token,Operador,Identificador
+Operador,Identificador
 :D
 <!
-Token,Operador,Identificador
+Operador,Identificador
 :D
 Isas
 Condicional,Palabra Reservada,Identificador
@@ -38,10 +38,10 @@ MientrasTanto
 Condicional,Palabra Reservada,Identificador
 :D
  
-Separador,Token,Identificador
+Separador,Identificador
 :D
 	
-Separador,Token,Identificador
+Separador,Identificador
 :D
 @
-Separador,Token,Identificador
+Separador,Identificador
