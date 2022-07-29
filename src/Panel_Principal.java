@@ -93,24 +93,30 @@ public class Panel_Principal extends JFrame {// Definimos la clase Panel Princip
 		JTextPane textPane = new JTextPane();
 		textPane.setBounds(10, 36, 565, 154);
 		contentPane.add(textPane);
-		textPane.setText(Main.extraerFicheroEscritura());
+		try {
+			textPane.setText(Main.extraerFicheroEscritura());
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { // Se define el metodo actionPerformed en el que agregamos un
 				// boton que cuando se ejecute verifique el parrafo escrito
 				// en el fichero y despues creemos una tabla donde colocamos
 				// todos nuestros resultados.
 				// Main.crearTabla(tuplas, textoParrafos).forEach(s -> System.out.println(s))
-				tuplas = Main.extraerFicheroSimbolo();
-				textPane.setText(Main.extraerFicheroEscritura());
-				Panel_2 p = null;
 				try {
+					tuplas = Main.extraerFicheroSimbolo();
+					textPane.setText(Main.extraerFicheroEscritura());
+					Panel_2 p = null;
 					p = new Panel_2(Main.tableData(Main.crearTabla(tuplas, textoParrafos)));
-				} catch (Exception ex) {
-					ex.printStackTrace();
-				}
-				p.ventana.setVisible(true);
-				dispose();
+					p.ventana.setVisible(true);
+					dispose();
 
+				} catch (Excepciones e1) {
+					e1.printStackTrace();
+				}
+			
 				;
 
 			}

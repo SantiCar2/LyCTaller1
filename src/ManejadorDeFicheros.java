@@ -11,7 +11,7 @@ public class ManejadorDeFicheros {//Esta clase la usamos para manejar la extracc
 
 	}
 
-	public static String leerFichero(String ruta) {//Este metodo se usa para leer el fichero y asi poder extraer todo los datos 
+	public static String leerFichero(String ruta) throws Excepciones {//Este metodo se usa para leer el fichero y asi poder extraer todo los datos 
 		//con una cadena de tipo String.
 		File doc = new File(ruta);
 		BufferedReader obj = null;
@@ -32,7 +32,7 @@ public class ManejadorDeFicheros {//Esta clase la usamos para manejar la extracc
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		return null;
+		throw new Excepciones("La lectura o ruta del fichero no esta disponible");
 
 	}
 }
