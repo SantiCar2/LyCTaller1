@@ -83,17 +83,27 @@ public class Main {
 	 */
 	public static String[][] tableData(Queue<filaTabla> data) {
 		String[][] ret = new String[data.size()][3];
-		for (int i = 0; i < data.size(); i++) {
+		int size = data.size();
+		for (int i = 0; i < size; i++) {
 			filaTabla temp = data.poll();
 			ret[i][0] = temp.getTupla().getSimbolo();
 			ret[i][1] = temp.getUbicacion();
 			String tiposTemp = "";
 			for (String s : temp.getTupla().getTipos()) {
 				tiposTemp += s;
+				tiposTemp += ", ";
 			}
 			ret[i][2] = tiposTemp;
 		}
 		System.out.println(ret);
+
+		for (int i = 0; i < ret.length; i++){
+			for(int j = 0; j < ret[i].length; j++){
+				System.out.println(ret[i][j]);
+			}
+			System.out.println();
+		}
+
 		return ret;
 	}
 
@@ -132,11 +142,11 @@ public class Main {
 						iSeparador++;
 					}
 					if (iSeparador < esSeparador.getTipos().length) {
-						tabla.add(new filaTabla(esSeparador, fila + "," + (i - col)));
+						tabla.add(new filaTabla(esSeparador, fila + "," + (i)));
 						System.out.println(auxiliar);
 						tuplaSimbolos tuplaPalabra = categorizarCaracter(tupla, auxiliar);
 						if (tuplaPalabra != null) {
-							tabla.add(new filaTabla(tuplaPalabra, fila + "," + (i - col - auxiliar.length())));
+							tabla.add(new filaTabla(tuplaPalabra, fila + "," + (i - auxiliar.length())));
 						}
 						auxiliar = "";
 					}
@@ -150,7 +160,7 @@ public class Main {
 				tuplaSimbolos tuplaPalabra = categorizarCaracter(tupla, auxiliar);
 				if (tuplaPalabra != null) {
 					System.out.println(auxiliar);
-					tabla.add(new filaTabla(tuplaPalabra, fila + "," + (i - col - auxiliar.length())));
+					tabla.add(new filaTabla(tuplaPalabra, fila + "," + (i + 1 - auxiliar.length())));
 				}
 			}
 

@@ -30,8 +30,10 @@ public class Panel_Principal extends JFrame {
 
 	private JPanel contentPane;
 	private static final String rutaSimbolos = "C:\\Users\\Dennis\\eclipse-workspace\\LC\\Archivos\\Simbolos.txt";
-	private static Queue<tuplaSimbolos> tuplas = new LinkedList<tuplaSimbolos>();
-	private Panel_2 p = new Panel_2();
+	public static Queue<tuplaSimbolos> tuplas = new LinkedList<tuplaSimbolos>();
+
+	public Main m = new Main();
+	public String textoParrafos;
 
 	// private static Queue<String> textoParrafo = new LinkedList<String>();
 
@@ -61,9 +63,9 @@ public class Panel_Principal extends JFrame {
 	 * Create the frame.
 	 */
 	public Panel_Principal() {
-		Panel_2 p2 = new Panel_2();
+		//Panel_2 p2 = new Panel_2();
 
-		Main m = new Main();
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 599, 300);
 		contentPane = new JPanel();
@@ -88,16 +90,13 @@ public class Panel_Principal extends JFrame {
 		contentPane.add(textPane);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
-				p2.ventana.setVisible(true);
-
+				//Main.crearTabla(tuplas, textoParrafos).forEach(s -> System.out.println(s))
 				tuplas = Main.extraerFichero();
+				textoParrafos = textPane.getText();
+				Panel_2 p = new Panel_2(Main.tableData(Main.crearTabla(tuplas, textoParrafos)));
+				p.ventana.setVisible(true);
 
-				String textoParrafos = textPane.getText();
 
-				p.setDatos(Main.tableData(Main.crearTabla(tuplas, textoParrafos)));
-
-				// Main.crearTabla(tuplas, textoParrafos).forEach(s -> System.out.println(s));
 				;
 
 			}
