@@ -22,7 +22,7 @@ public class tuplaSimbolos {
 	public String getSimbolo() {
 		return Simbolo;
 	}
-	
+
 	public String[] getTipos() {
 		return tipos;
 	}

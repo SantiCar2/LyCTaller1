@@ -15,18 +15,19 @@ public class Panel_2 extends JFrame {
 	private JPanel contentPane;
 	public JFrame ventana;
 	private JTable table;
-	private String[][] datos = {{ "1", "Fernando", "Castillo", "Ecuador" }};
-	private String[] titulos = { "Simbolo", "Ubicacion", "Tipos"};
+	private String[][] datos = new String[0][0];
+	private String[] titulos = { "Simbolo", "Ubicacion", "Tipo", "Tipo", "Tipo" };
 
 	/**
 	 * Launch the application.
 	 */
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					Panel_2 frame = new Panel_2();
-					
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -34,11 +35,19 @@ public class Panel_2 extends JFrame {
 		});
 	}
 
+	public String[][] getDatos() {
+		return datos;
+	}
+
+	public void setDatos(String[][] datos) {
+		this.datos = datos;
+	}
+
 	/**
 	 * Create the frame.
 	 */
 	public Panel_2() {
-		//Panel_Principal p = new Panel_Principal();
+		// Panel_Principal p = new Panel_Principal();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -54,8 +63,6 @@ public class Panel_2 extends JFrame {
 		ventana.setSize(438, 200);
 		set_Table();
 		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		
 
 	}
 

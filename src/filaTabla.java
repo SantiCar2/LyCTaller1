@@ -29,6 +29,5 @@ public class filaTabla {
 	public String toString() {
 		return "filaTabla [tupla=" + tupla + ", ubicacion=" + ubicacion + "]";
 	}
-	
-	
+
 }

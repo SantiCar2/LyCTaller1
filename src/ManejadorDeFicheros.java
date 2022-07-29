@@ -5,12 +5,10 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class ManejadorDeFicheros {
-	
 
-	
 	public static void main(String[] args) {
 		ManejadorDeFicheros m = new ManejadorDeFicheros();
-		
+
 	}
 
 	public static String leerFichero(String ruta) {
@@ -34,6 +32,6 @@ public class ManejadorDeFicheros {
 			e1.printStackTrace();
 		}
 		return null;
-		
+
 	}
 }

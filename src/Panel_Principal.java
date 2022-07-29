@@ -31,6 +31,7 @@ public class Panel_Principal extends JFrame {
 	private JPanel contentPane;
 	private static final String rutaSimbolos = "C:\\Users\\Dennis\\eclipse-workspace\\LC\\Archivos\\Simbolos.txt";
 	private static Queue<tuplaSimbolos> tuplas = new LinkedList<tuplaSimbolos>();
+	private Panel_2 p = new Panel_2();
 
 	// private static Queue<String> textoParrafo = new LinkedList<String>();
 
@@ -94,8 +95,11 @@ public class Panel_Principal extends JFrame {
 
 				String textoParrafos = textPane.getText();
 
-				Main.crearTabla(tuplas, textoParrafos).forEach(s -> System.out.println(s));;
-				System.out.println("Aqui estoy hola");
+				p.setDatos(Main.tableData(Main.crearTabla(tuplas, textoParrafos)));
+
+				// Main.crearTabla(tuplas, textoParrafos).forEach(s -> System.out.println(s));
+				;
+
 			}
 		});
 
