@@ -130,7 +130,7 @@ public class Main {
 			String caracter = String.valueOf(textoCompleto.charAt(i));
 			if (caracter.compareTo("\n") == 0) {
 				fila++;
-				col = i;
+				col = 0;
 				auxiliar = "";
 			} else {
 				tuplaSimbolos esSeparador = categorizarCaracter(tupla, caracter);
@@ -142,12 +142,18 @@ public class Main {
 						iSeparador++;
 					}
 					if (iSeparador < esSeparador.getTipos().length) {
-						tabla.add(new filaTabla(esSeparador, fila + "," + (i)));
+
+						
 						System.out.println(auxiliar);
 						tuplaSimbolos tuplaPalabra = categorizarCaracter(tupla, auxiliar);
 						if (tuplaPalabra != null) {
-							tabla.add(new filaTabla(tuplaPalabra, fila + "," + (i - auxiliar.length())));
+							tabla.add(new filaTabla(tuplaPalabra, fila + "," + (col - auxiliar.length())));
+							
+						} else{
+							tabla.add(new filaTabla(new tuplaSimbolos(auxiliar, new String[]{"Identificador"}), fila + "," + (col + 1 - auxiliar.length())));
 						}
+						tabla.add(new filaTabla(esSeparador, fila + "," + (col)));
+
 						auxiliar = "";
 					}
 
@@ -161,8 +167,12 @@ public class Main {
 				if (tuplaPalabra != null) {
 					System.out.println(auxiliar);
 					tabla.add(new filaTabla(tuplaPalabra, fila + "," + (i + 1 - auxiliar.length())));
+					
+				} else{
+					tabla.add(new filaTabla(new tuplaSimbolos(auxiliar, new String[]{"Identificador"}), fila + "," + (col + 1 - auxiliar.length())));
 				}
 			}
+			col++;
 
 		}
 
