@@ -1,0 +1,47 @@
+///
+Operador,Identificador
+:D
+****
+Operador,Identificador
+:D
+++
+Operador,Identificador
+:D
+-
+Operador,Identificador
+:D
+==
+Operador,Identificador
+:D
+/-
+Operador,Identificador
+:D
+&&
+Operador,Identificador
+:D
+~
+Operador,Identificador
+:D
+!>
+Operador,Identificador
+:D
+<!
+Operador,Identificador
+:D
+Isas
+Condicional,Palabra Reservada,Identificador
+:D
+Fore
+Condicional,Palabra Reservada,Identificador
+:D
+MientrasTanto
+Condicional,Palabra Reservada,Identificador
+:D
+ 
+Separador,Identificador
+:D
+	
+Separador,Identificador
+:D
+@
+Separador,Identificador
