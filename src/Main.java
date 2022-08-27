@@ -11,7 +11,7 @@ public class Main {//En esta clase creamos todos los metodos principales para pa
 	//utilizamos para almacenar nuestra tabla de simbolos.
 	private static Queue<tuplaSimbolos> tuplas = new LinkedList<tuplaSimbolos>();//En etse Queue almacenamos nuestra Tupla de 
 	//Simbolos.
-	private static final String rutaEscritura = "Archivos\\EscribeAqui.txt";// Esta ruta se
+	public static String rutaEscritura = "Archivos\\EscribeAqui.txt";// Esta ruta se
 	//utiliza para el fichero en el cual se debee escribir el texto para despues compilar nuestro lenguaje.
 
 	public static Queue<tuplaSimbolos> getTuplas() {//LA usamos para acceder a nuestra Tupla de simbolos.
@@ -103,7 +103,7 @@ public class Main {//En esta clase creamos todos los metodos principales para pa
 		String auxiliar = "";	//String vacio para guardar los caracteres hasta encontrar un separador
 		textoCompleto = extraerFicheroEscritura();	//Obtiene el texto de entrada
 		if(textoCompleto.length() < 1){
-			throw new Excepciones("¿El texto de entrada está vacío!");
+			throw new Excepciones("¿El texto de entrada está vacío?");
 		}
 		int fila = 0;	//Indicador para la posicion
 		int col = 0;	//Indicador para la posicion

@@ -9,21 +9,14 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 import java.awt.EventQueue;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JTextField;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.jar.JarOutputStream;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
-import javax.swing.SwingConstants;
-import javax.swing.JTextPane;
 import java.awt.Font;
 
 public class Panel_Principal extends JFrame {// Definimos la clase Panel Principal en la cual vamos a almacenar nuestro
@@ -90,11 +83,12 @@ public class Panel_Principal extends JFrame {// Definimos la clase Panel Princip
 		lblNewLabel.setBounds(228, 0, 217, 25);
 		contentPane.add(lblNewLabel);
 
-		JTextPane textPane = new JTextPane();
+		/*JTextPane textPane = new JTextPane();
 		textPane.setBounds(10, 36, 565, 154);
-		contentPane.add(textPane);
+		contentPane.add(textPane);*/
+
 		try {
-			textPane.setText(Main.extraerFicheroEscritura());
+			//textPane.setText(Main.extraerFicheroEscritura());
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -105,9 +99,13 @@ public class Panel_Principal extends JFrame {// Definimos la clase Panel Princip
 				// en el fichero y despues creemos una tabla donde colocamos
 				// todos nuestros resultados.
 				// Main.crearTabla(tuplas, textoParrafos).forEach(s -> System.out.println(s))
+				JFileChooser j = new JFileChooser();
+				if(j.showOpenDialog(null) == JFileChooser.APPROVE_OPTION){
+					Main.rutaEscritura = j.getSelectedFile().getAbsolutePath();
+				}
 				try {
 					tuplas = Main.extraerFicheroSimbolo();
-					textPane.setText(Main.extraerFicheroEscritura());
+					/*textPane.setText(Main.extraerFicheroEscritura());*/
 					Panel_2 p = null;
 					p = new Panel_2(Main.tableData(Main.crearTabla(tuplas, textoParrafos)));
 					p.ventana.setVisible(true);
