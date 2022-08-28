@@ -51,3 +51,6 @@ Separador,Identificador
 :D
 )
 Separador,Identificador
+:D
+/*
+Comentario
