@@ -1,1 +1,9 @@
-if (r == 3)
+e ++ 6 /// g
+ **** hola h
+if
+
+++ Esto es una operacion de incremento
+
+Tabla te tokens no sirve
+
+Operaciones separar con sentencias en lugar de una sola operacion

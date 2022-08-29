@@ -1,0 +1,19 @@
+Division:D///:D1
+Multiplicacion:D****:D2
+Suma:D++:D3
+Resta:D-:D4
+Igualdad comparacion:D==:D5
+Desigualdad:D!=:D6
+Y:D&&:D7
+Igualdad asignacion:D~:D8
+Mayor que:D!>:D9
+Menor que:D<!:D10
+Condicional if:DIsas:D11
+For:DFore:D12
+While:DMientrasTanto:D13
+Espacio:D\s:D14
+Tabulador:D\t:D15
+No sabemos (pero separa):D@:D16
+Parentesis abre:D(:D17
+Parentesis cierra:D):D18
+Comentario:D/*:D19

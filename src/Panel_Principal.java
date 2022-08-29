@@ -21,12 +21,13 @@ import java.awt.Font;
 
 public class Panel_Principal extends JFrame {// Definimos la clase Panel Principal en la cual vamos a almacenar nuestro
 	// texto escrito por el usuario.
-
+	
 	private JPanel contentPane;// Se utiliza para almacenar todas las plantillas en el front
-	private static final String rutaSimbolos = "Archivos\\\\Simbolos.txt";// Es la ruta que 
-	//utilizamos para almacenar nuestra tabla de simbolos.
+	private static final String rutaSimbolos = "Archivos\\\\Simbolos.txt";// Es la ruta que
+	// utilizamos para almacenar nuestra tabla de simbolos.
 	private static final String rutaEscritura = "Archivos\\\\EscribeAqui.txt";// Esta ruta se
-	//utiliza para el fichero en el cual se debee escribir el texto para despues compilar nuestro lenguaje.
+	// utiliza para el fichero en el cual se debee escribir el texto para despues
+	// compilar nuestro lenguaje.
 	public static Queue<tuplaSimbolos> tuplas = new LinkedList<tuplaSimbolos>();// Utilizamos un Queque para almacenar
 	// nuestra tupla de simbolos
 
@@ -73,48 +74,122 @@ public class Panel_Principal extends JFrame {// Definimos la clase Panel Princip
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		JButton btnNewButton = new JButton("Verificar\r\n");
-		btnNewButton.setBounds(214, 201, 164, 23);
-		contentPane.add(btnNewButton);
+		JButton btnNewButton1 = new JButton("Tabla de simbolos\r\n");
+		btnNewButton1.setBounds(195, 70, 185, 23);
+		contentPane.add(btnNewButton1);
 
-		JLabel lblNewLabel = new JLabel("Ingrese su parrafo:\r\n");
+		JButton btnNewButton2 = new JButton("Salir\r\n");
+		btnNewButton2.setBounds(195, 209, 185, 23);
+		contentPane.add(btnNewButton2);
+		
+		JButton btnNewButton3 = new JButton("Tabla de Tokens\r\n");
+		btnNewButton3.setBounds(195, 116, 185, 23);
+		contentPane.add(btnNewButton3);
+
+		JLabel lblNewLabel = new JLabel("Porfavor seleccione el boton:\r\n");
 		lblNewLabel.setFont(new Font("Gadugi", Font.PLAIN, 15));
 		lblNewLabel.setForeground(Color.WHITE);
-		lblNewLabel.setBounds(228, 0, 217, 25);
+		lblNewLabel.setBounds(192, 0, 228, 25);
 		contentPane.add(lblNewLabel);
+		
+		JButton btnOperacionesAritmeticas = new JButton("Operaciones Aritmeticas");
+		btnOperacionesAritmeticas.setBounds(195, 163, 185, 23);
+		contentPane.add(btnOperacionesAritmeticas);
 
-		/*JTextPane textPane = new JTextPane();
-		textPane.setBounds(10, 36, 565, 154);
-		contentPane.add(textPane);*/
+		/*
+		 * JTextPane textPane = new JTextPane(); textPane.setBounds(10, 36, 565, 154);
+		 * contentPane.add(textPane);
+		 */
 
 		try {
-			//textPane.setText(Main.extraerFicheroEscritura());
+			// textPane.setText(Main.extraerFicheroEscritura());
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		btnNewButton.addActionListener(new ActionListener() {
+		btnNewButton1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { // Se define el metodo actionPerformed en el que agregamos un
 				// boton que cuando se ejecute verifique el parrafo escrito
 				// en el fichero y despues creemos una tabla donde colocamos
 				// todos nuestros resultados.
 				// Main.crearTabla(tuplas, textoParrafos).forEach(s -> System.out.println(s))
 				JFileChooser j = new JFileChooser();
-				if(j.showOpenDialog(null) == JFileChooser.APPROVE_OPTION){
+				if (j.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
 					Main.rutaEscritura = j.getSelectedFile().getAbsolutePath();
+					
 				}
 				try {
 					tuplas = Main.extraerFicheroSimbolo();
-					/*textPane.setText(Main.extraerFicheroEscritura());*/
+					/* textPane.setText(Main.extraerFicheroEscritura()); */
 					Panel_2 p = null;
 					p = new Panel_2(Main.tableData(Main.crearTabla(tuplas, textoParrafos)));
 					p.ventana.setVisible(true);
 					dispose();
+		
+					
 
 				} catch (Excepciones e1) {
 					e1.printStackTrace();
 				}
-			
+
+				;
+
+			}
+		});
+		
+		btnNewButton2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) { // Boton para salir del programa.
+				dispose();
+			}
+		});
+		
+		btnNewButton3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) { // Boton para salir del programa.
+				JFileChooser j = new JFileChooser();
+				if (j.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+					Main.rutaEscritura = j.getSelectedFile().getAbsolutePath();
+					
+				}
+				try {
+					tuplas = Main.extraerFicheroSimbolo();
+					/* textPane.setText(Main.extraerFicheroEscritura()); */
+					Panel_3 p = null;
+					p = new Panel_3(Main.tablaDeTokens(Main.crearTabla(tuplas, textoParrafos)));
+					p.ventana.setVisible(true);
+					dispose();
+		
+					
+
+				} catch (Excepciones e1) {
+					e1.printStackTrace();
+				}
+
+				;
+
+			}
+		});
+		
+		btnOperacionesAritmeticas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) { // Boton para salir del programa.
+				JFileChooser j = new JFileChooser();
+				if (j.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+					Main.rutaEscritura = j.getSelectedFile().getAbsolutePath();
+					
+				}
+				try {
+					tuplas = Main.extraerFicheroSimbolo();
+
+					Panel_4 p = null;
+					p = new Panel_4(Main.operacionesAritmeticasData(Main.crearTabla(tuplas, textoParrafos), Main.extraerFicheroEscritura()));
+					p.ventana.setVisible(true);
+					dispose();
+		
+					
+
+				} catch (Excepciones e1) {
+					e1.printStackTrace();
+				}
+
 				;
 
 			}
